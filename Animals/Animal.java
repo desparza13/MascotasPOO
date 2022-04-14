@@ -1,6 +1,6 @@
 package Animals;
 
-public abstract class Animal{
+public class Animal{
     protected static final double MINIMUM_PERCENTAGE = 0.0;
     protected static final double MAXIMUM_PERCENTAGE = 100.0;
 
@@ -98,9 +98,4 @@ public abstract class Animal{
     public double getSicknessPercentage(){
         return this.sicknessPercentage;
     }
-
-    public abstract void expressEmotion();
-    public abstract void eat();
-    public abstract void getSick();
-    public abstract void askForSomething();
 }
