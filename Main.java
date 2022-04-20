@@ -4,6 +4,7 @@ import java.net.URL;
 import java.awt.*;
 import javax.swing.*;
 import java.io.*;
+import Animals.*;
 
 @SuppressWarnings("serial")
 public class Main extends JPanel{
@@ -26,8 +27,8 @@ public class Main extends JPanel{
        } else {
           try {
              img = ImageIO.read(url);
-             imgWidth = img.getWidth(this);
-             imgHeight = img.getHeight(this);
+             this.imgWidth = img.getWidth(this);
+             this.imgHeight = img.getHeight(this);
           } catch (IOException ex) {
              ex.printStackTrace();
           }
@@ -47,16 +48,8 @@ public class Main extends JPanel{
         // drawImage() does not use the current transform of the Graphics2D context
         // Need to create a AffineTransform and pass into drawImage()
         AffineTransform transform = new AffineTransform();  // identity transform
-        // Display the image with its center at the initial (x, y)
-        transform.translate(x - imgWidth/2, y - imgHeight/2);
         g2d.drawImage(img, transform, this);
         // Try applying more transform to this image
-        for (int i = 0; i < 5; ++i) {
-            transform.translate(70.0, 5.0);
-            transform.rotate(Math.toRadians(15), imgWidth/2, imgHeight/2); // about its center
-            transform.scale(0.9, 0.9);
-            g2d.drawImage(img, transform, this);
-        }
     }
     
 
@@ -65,12 +58,29 @@ public class Main extends JPanel{
         SwingUtilities.invokeLater(new Runnable() {
            @Override
            public void run() {
-              JFrame frame = new JFrame(TITLE);
-              frame.setContentPane(new Main());
-              frame.pack();
-              frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-              frame.setLocationRelativeTo(null); // center the application window
-              frame.setVisible(true);
+               Animal pet = new Animal("Pou", "Undfined");
+               JFrame frame = new JFrame(TITLE);
+               JLabel FunnyPercentageLabel = new JLabel("Funny: "+pet.getFunnyPercentage()+" %", JLabel.CENTER);
+               JLabel hungerPercentageLabel = new JLabel("Hunger: "+pet.getHungerPercentage()+" %", JLabel.CENTER);
+               JLabel energyPercentageLabel = new JLabel("Energy: "+pet.getEnergyPercentage()+" %", JLabel.CENTER);
+               JLabel sicknessPercentageLabel = new JLabel("Sickness: "+pet.getSicknessPercentage()+" %", JLabel.CENTER);
+               JLabel lifetimePercentageLabel = new JLabel("Lifetime: "+pet.getLifetimePercentage()+" %", JLabel.CENTER);
+               frame.setContentPane(new Main());
+               frame.setLayout(null);
+               frame.pack();
+               frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+               frame.setLocationRelativeTo(null); // center the application window
+               frame.setVisible(true);
+               frame.add(FunnyPercentageLabel);
+               frame.add(hungerPercentageLabel);
+               frame.add(energyPercentageLabel);
+               frame.add(sicknessPercentageLabel);
+               frame.add(lifetimePercentageLabel);
+               FunnyPercentageLabel.setBounds(350, 50, 100, 15);
+               hungerPercentageLabel.setBounds(350, 70, 100, 15);
+               energyPercentageLabel.setBounds(350, 90, 100, 15);
+               sicknessPercentageLabel.setBounds(350, 110, 100, 15);
+               lifetimePercentageLabel.setBounds(350, 130, 100, 15);
            }
         });
      }

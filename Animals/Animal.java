@@ -12,7 +12,7 @@ public class Animal{
     protected double lifetimePercentage;
     protected double sicknessPercentage;
 
-    protected Animal(){
+    public Animal(){
         setName("Generic pet test");
         setSpecies("Generic species input");
         setSicknessPercentage(0.0);
@@ -23,7 +23,7 @@ public class Animal{
 
     }
 
-    protected Animal(String Name, String species){
+    public Animal(String Name, String species){
         setName(Name);
         setSpecies("species");
         setSicknessPercentage(0.0);
