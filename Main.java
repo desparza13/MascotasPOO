@@ -80,7 +80,7 @@ public class Main extends JPanel{
                hungerPercentageLabel.setBounds(350, 70, 100, 15);
                energyPercentageLabel.setBounds(350, 90, 100, 15);
                sicknessPercentageLabel.setBounds(350, 110, 100, 15);
-               lifetimePercentageLabel.setBounds(350, 130, 100, 15);
+               lifetimePercentageLabel.setBounds(350, 140, 100, 15);
            }
         });
      }
