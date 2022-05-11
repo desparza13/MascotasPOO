@@ -1,6 +1,8 @@
 package Display;
 
 import Animals.*;
+import ImageHandler.ImageHandler;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,6 +14,8 @@ public class Display extends JFrame implements ActionListener {
     JButton healButton;
     JButton feedButton;
     JButton sleepButton;
+    ImageHandler imgHandler = new ImageHandler();
+    JEditorPane editorPane = new JEditorPane();
 
     JLabel FunnyPercentageLabel;
     JLabel hungerPercentageLabel;
@@ -58,14 +62,18 @@ public class Display extends JFrame implements ActionListener {
     }
 
     private void initializeEditorPane1(){
-        JEditorPane editorPane = new JEditorPane();
         editorPane.setContentType("text/html");
         editorPane.setText(
-                "<font face='bell mt' color = 'yellow' size = '150'> Fun: " + base.getFunPercentage() +" % </font><br>" +
-                "<font face='bell mt' color = 'black' size = '150'> Energy: " + base.getEnergyPercentage() +" % </font><br>" +
-                "<font face='bell mt' color = 'green' size = '150'> Hunger: " + base.getHungerPercentage() +" %</font><br>" +
-                "<font face='bell mt' color = 'yellow' size = '150'> Sickness: " + base.getSicknessPercentage() +" %</font><br>" +
-                "<font face='bell mt' color = 'black' size = '150'> Lifetime: " + base.getLifetimePercentage() +" %</font><br>"
+                "<font face='bell mt' color = 'yellow' size = '150'> Fun: " +
+                        base.getFunPercentage() +" % </font><br>" +
+                "<font face='bell mt' color = 'black' size = '150'> Energy: " +
+                        base.getEnergyPercentage() +" % </font><br>" +
+                "<font face='bell mt' color = 'green' size = '150'> Hunger: " +
+                        base.getHungerPercentage() +" %</font><br>" +
+                "<font face='bell mt' color = 'yellow' size = '150'> Sickness: " +
+                        base.getSicknessPercentage() +" %</font><br>" +
+                "<font face='bell mt' color = 'black' size = '150'> Lifetime: " +
+                        base.getLifetimePercentage() +" %</font><br>"
         );
         editorPane.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(editorPane);
@@ -104,10 +112,26 @@ public class Display extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent event){
         if(event.getSource() == playButton){
-            this.playButtonPressed = true;
+            base.play();
         } else if (event.getSource() == healButton){
-            healButtonPressed = true;
+            base.heal();
+        } else if(event.getSource() == feedButton){
+            base.eat();
+        } else if(event.getSource() == sleepButton){
+            base.sleep();
         }
+        this.imageRoute = imgHandler.setImage(base);
+        remove(jpanel);
+        add(jpanel);
+        revalidate();
+        repaint();
+        editorPane.setText(
+                "<font face='bell mt' color = 'yellow' size = '150'> Fun: " + base.getFunPercentage() +" % </font><br>" +
+                "<font face='bell mt' color = 'black' size = '150'> Energy: " + base.getEnergyPercentage() +" % </font><br>" +
+                "<font face='bell mt' color = 'green' size = '150'> Hunger: " + base.getHungerPercentage() +" %</font><br>" +
+                "<font face='bell mt' color = 'yellow' size = '150'> Sickness: " + base.getSicknessPercentage() +" %</font><br>" +
+                "<font face='bell mt' color = 'black' size = '150'> Lifetime: " + base.getLifetimePercentage() +" %</font><br>"
+        );
     }
 
     @Override
@@ -119,6 +143,5 @@ public class Display extends JFrame implements ActionListener {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image image = toolkit.getImage(this.imageRoute);
         graphics2D.drawImage(image, 40, 150, Animal.imageResolution, Animal.imageResolution, this);
-
     }
 }

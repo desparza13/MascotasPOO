@@ -4,6 +4,8 @@ public abstract class Animal {
     protected static final double MINIMUM_PERCENTAGE = 0.0;
     protected static final double MAXIMUM_PERCENTAGE = 100.0;
 
+    protected String imageRoute;
+
     protected String name;
     protected double funnyPercentage;
     protected double hungerPercentage;
@@ -13,6 +15,14 @@ public abstract class Animal {
 
     public static final int imageResolution = 300;
 
+    public String getImageRoute(){
+        return this.imageRoute;
+    }
+
+    public void setImageRoute(String imageRoute){
+        this.imageRoute = imageRoute;
+    }
+
     public Animal(){
         setName("Generic pet test");
         setSicknessPercentage(0.0);
@@ -20,7 +30,6 @@ public abstract class Animal {
         setHungerPercentage(0.0);
         setEnergyPercentage(100.0);
         setLifetimePercentage(0.0);
-
     }
 
     public Animal(String name){
