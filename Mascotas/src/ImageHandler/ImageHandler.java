@@ -34,16 +34,16 @@ public class ImageHandler {
         String newRoute;
         switch(selected){
             case NORMAL:
-                newRoute = "src/Assets/"+this.pet+"/Normal.jpg";
+                newRoute = "src/Assets/"+this.pet+"/Normal.png";
                 break;
             case BORED:
-                newRoute = "src/Assets/"+this.pet+"/Sleepy.jpg";
+                newRoute = "src/Assets/"+this.pet+"/Bored.png";
                 break;
             case SICK:
-                newRoute = "src/Assets/"+this.pet+"/Sick.jpg";
+                newRoute = "src/Assets/"+this.pet+"/Sick.png";
                 break;
             case SLEEPY:
-                newRoute = "src/Assets/"+this.pet+"/Tired.jpg";
+                newRoute = "src/Assets/"+this.pet+"/Sleepy.png";
                 break;
             default:
                 newRoute = this.imageRoute;

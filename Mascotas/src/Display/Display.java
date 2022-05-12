@@ -113,7 +113,7 @@ public class Display extends JFrame implements ActionListener {
     private void initializeEditorPane2(){
         editorPane2.setContentType("text/html");
         editorPane2.setText(
-                "<font face = 'Times New Roman' color = 'black' size = '80'>"+base.getName()+"</font>"
+                "<font face = 'Times New Roman' color = 'Green' size = '80'>"+base.getName()+"</font>"
         );
         editorPane2.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(editorPane2);
@@ -124,11 +124,11 @@ public class Display extends JFrame implements ActionListener {
     private void initializeEditorPane3(){
         editorPane3.setContentType("text/html");
         editorPane3.setText(
-                "<font face = 'Times New Roman' color = 'black' size = '80'>"+this.petMessage+"</font>"
+                "<font face = 'Times New Roman' color = 'green' size = '80'>"+this.petMessage+"</font>"
         );
         editorPane3.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(editorPane3);
-        scrollPane.setBounds(400, 300, 350, 70);
+        scrollPane.setBounds(400, 300, 350, 150);
         add(scrollPane);
     }
 
@@ -180,7 +180,7 @@ public class Display extends JFrame implements ActionListener {
         );
 
         editorPane3.setText(
-                "<font face = 'Tomes New Roman' color = 'Green' size = '80'>"+this.petMessage+"</font>"
+                "<font face = 'Times New Roman' color = 'Green' size = '80'>"+this.petMessage+"</font>"
         );
     }
 

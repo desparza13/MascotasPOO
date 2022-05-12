@@ -4,7 +4,7 @@ public class Rabbit extends Animal{
 
     public Rabbit(String name){
         super(name);
-        super.imageRoute = "src/Assets/Rabbit/Normal.jpg";
+        super.imageRoute = "src/Assets/Rabbit/Normal.png";
     }
 
     public void play(){
@@ -18,7 +18,7 @@ public class Rabbit extends Animal{
         super.setEnergyPercentage(energy - 10.0);
         super.setLifetimePercentage(lifetime + 5);
         super.setHungerPercentage(hunger + 10);
-        super.setSicknessPercentage(sickness + 5);
+        super.setSicknessPercentage(sickness + 10);
     }
 
     public void eat(){
@@ -27,7 +27,7 @@ public class Rabbit extends Animal{
         fun = super.funnyPercentage;
         lifetime = super.lifetimePercentage;
         super.setHungerPercentage(hunger - 10.0);
-        super.setFunnyPercentage(fun - 10);
+        super.setFunnyPercentage(fun - 2);
         super.setLifetimePercentage(lifetime + 5);
     }
 
@@ -36,16 +36,16 @@ public class Rabbit extends Animal{
         lifetime = super.lifetimePercentage;
         sleep = super.energyPercentage;
         fun = super.funnyPercentage;
-        super.setEnergyPercentage(sleep + 10.0);
+        super.setEnergyPercentage(sleep + 20.0);
         super.setLifetimePercentage(lifetime + 5);
-        super.setFunnyPercentage(fun - 10);
+        super.setFunnyPercentage(fun - 2);
     }
 
     public void heal(){
         double health,
                 lifetime = super.lifetimePercentage;
         health = super.sicknessPercentage;
-        super.setSicknessPercentage(health - 10.0);
-        super.setLifetimePercentage(lifetime + 5);
+        super.setSicknessPercentage(health - 20);
+        super.setLifetimePercentage(lifetime + 2);
     }
 }

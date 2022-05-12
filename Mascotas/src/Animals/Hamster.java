@@ -4,7 +4,7 @@ public class Hamster extends Animal{
 
     public Hamster(String name){
         super(name);
-        super.imageRoute = "src/Assets/Hamster/Normal.jpg";
+        super.imageRoute = "src/Assets/Hamster/Normal.png";
     }
 
     public void play(){
