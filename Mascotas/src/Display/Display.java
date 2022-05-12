@@ -14,8 +14,12 @@ public class Display extends JFrame implements ActionListener {
     JButton healButton;
     JButton feedButton;
     JButton sleepButton;
-    ImageHandler imgHandler = new ImageHandler();
+    ImageHandler imgHandler;
     JEditorPane editorPane = new JEditorPane();
+    JEditorPane editorPane2 = new JEditorPane();
+    JEditorPane editorPane3 = new JEditorPane();
+
+    private String petMessage = "I am okay";
 
     JLabel FunnyPercentageLabel;
     JLabel hungerPercentageLabel;
@@ -35,6 +39,23 @@ public class Display extends JFrame implements ActionListener {
     public Display(Hamster hamster){
         this.imageRoute = hamster.getImageRoute();
         base = (Hamster)hamster;
+        imgHandler = new ImageHandler((Hamster) base);
+        initializePanel();
+        initializeScreen();
+    }
+
+    public Display(Dog dog){
+        this.imageRoute = dog.getImageRoute();
+        base = (Dog)dog;
+        imgHandler = new ImageHandler((Dog) base);
+        initializePanel();
+        initializeScreen();
+    }
+
+    public Display(Rabbit rabbit){
+        this.imageRoute = rabbit.getImageRoute();
+        base = (Rabbit)rabbit;
+        imgHandler = new ImageHandler((Rabbit) base);
         initializePanel();
         initializeScreen();
     }
@@ -61,18 +82,26 @@ public class Display extends JFrame implements ActionListener {
         sleepButton.addActionListener(this);
     }
 
+    private void setPetMessage(String newMessage){
+        this.petMessage = newMessage;
+    }
+
+    private String getPetMessage(){
+        return this.petMessage;
+    }
+
     private void initializeEditorPane1(){
         editorPane.setContentType("text/html");
         editorPane.setText(
-                "<font face='bell mt' color = 'yellow' size = '150'> Fun: " +
+                "<font face='Times New Roman' color = 'black' size = '150'> Fun: " +
                         base.getFunPercentage() +" % </font><br>" +
-                "<font face='bell mt' color = 'black' size = '150'> Energy: " +
+                "<font face='Times New Roman' color = 'Green' size = '150'> Energy: " +
                         base.getEnergyPercentage() +" % </font><br>" +
-                "<font face='bell mt' color = 'green' size = '150'> Hunger: " +
+                "<font face='Times New Roman' color = 'black' size = '150'> Hunger: " +
                         base.getHungerPercentage() +" %</font><br>" +
-                "<font face='bell mt' color = 'yellow' size = '150'> Sickness: " +
+                "<font face='Times New Roman' color = 'Green' size = '150'> Sickness: " +
                         base.getSicknessPercentage() +" %</font><br>" +
-                "<font face='bell mt' color = 'black' size = '150'> Lifetime: " +
+                "<font face='Times New Roman' color = 'black' size = '150'> Lifetime: " +
                         base.getLifetimePercentage() +" %</font><br>"
         );
         editorPane.setEditable(false);
@@ -82,14 +111,24 @@ public class Display extends JFrame implements ActionListener {
     }
 
     private void initializeEditorPane2(){
-        JEditorPane editorPane = new JEditorPane();
-        editorPane.setContentType("text/html");
-        editorPane.setText(
-                "<font face = 'Harrington' color = 'black' size = '80'>"+base.getName()+"</font>"
+        editorPane2.setContentType("text/html");
+        editorPane2.setText(
+                "<font face = 'Times New Roman' color = 'black' size = '80'>"+base.getName()+"</font>"
         );
-        editorPane.setEditable(false);
-        JScrollPane scrollPane = new JScrollPane(editorPane);
+        editorPane2.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(editorPane2);
         scrollPane.setBounds(40, 10, 500, 70);
+        add(scrollPane);
+    }
+
+    private void initializeEditorPane3(){
+        editorPane3.setContentType("text/html");
+        editorPane3.setText(
+                "<font face = 'Times New Roman' color = 'black' size = '80'>"+this.petMessage+"</font>"
+        );
+        editorPane3.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(editorPane3);
+        scrollPane.setBounds(400, 300, 350, 70);
         add(scrollPane);
     }
 
@@ -97,6 +136,7 @@ public class Display extends JFrame implements ActionListener {
         initializeButtons();
         initializeEditorPane1();
         initializeEditorPane2();
+        initializeEditorPane3();
         jpanel = new JPanel();
         add(jpanel);
         jpanel.setPreferredSize(new Dimension(this.width, this.height));
@@ -121,16 +161,26 @@ public class Display extends JFrame implements ActionListener {
             base.sleep();
         }
         this.imageRoute = imgHandler.setImage(base);
+        this.petMessage = imgHandler.getMessage();
         remove(jpanel);
         add(jpanel);
         revalidate();
         repaint();
         editorPane.setText(
-                "<font face='bell mt' color = 'yellow' size = '150'> Fun: " + base.getFunPercentage() +" % </font><br>" +
-                "<font face='bell mt' color = 'black' size = '150'> Energy: " + base.getEnergyPercentage() +" % </font><br>" +
-                "<font face='bell mt' color = 'green' size = '150'> Hunger: " + base.getHungerPercentage() +" %</font><br>" +
-                "<font face='bell mt' color = 'yellow' size = '150'> Sickness: " + base.getSicknessPercentage() +" %</font><br>" +
-                "<font face='bell mt' color = 'black' size = '150'> Lifetime: " + base.getLifetimePercentage() +" %</font><br>"
+                "<font face='Times New Roman' color = 'black' size = '150'> Fun: " +
+                        base.getFunPercentage() +" % </font><br>" +
+                        "<font face='Times New Roman' color = 'Green' size = '150'> Energy: " +
+                        base.getEnergyPercentage() +" % </font><br>" +
+                        "<font face='Times New Roman' color = 'black' size = '150'> Hunger: " +
+                        base.getHungerPercentage() +" %</font><br>" +
+                        "<font face='Times New Roman' color = 'Green' size = '150'> Sickness: " +
+                        base.getSicknessPercentage() +" %</font><br>" +
+                        "<font face='Times New Roman' color = 'black' size = '150'> Lifetime: " +
+                        base.getLifetimePercentage() +" %</font><br>"
+        );
+
+        editorPane3.setText(
+                "<font face = 'Tomes New Roman' color = 'Green' size = '80'>"+this.petMessage+"</font>"
         );
     }
 

@@ -1,10 +1,10 @@
 package Animals;
 
-public class Hamster extends Animal{
+public class Rabbit extends Animal{
 
-    public Hamster(String name){
+    public Rabbit(String name){
         super(name);
-        super.imageRoute = "src/Assets/Hamster/Normal.jpg";
+        super.imageRoute = "src/Assets/Rabbit/Normal.jpg";
     }
 
     public void play(){
@@ -43,7 +43,7 @@ public class Hamster extends Animal{
 
     public void heal(){
         double health,
-        lifetime = super.lifetimePercentage;
+                lifetime = super.lifetimePercentage;
         health = super.sicknessPercentage;
         super.setSicknessPercentage(health - 10.0);
         super.setLifetimePercentage(lifetime + 5);
